@@ -68,8 +68,6 @@ function generateBingo() {
    var x=y=0;
    var i=0;
    while(i < phrases.length && i < 25) {
-
-      console.log(phrases[i]);
       cells[x][y].innerHTML = phrases[i];
 
       y++;
