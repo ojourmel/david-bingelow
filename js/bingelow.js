@@ -1,8 +1,26 @@
 function phraseList() {
    var phrases = [
-                  "You bet your biscut!",
-                  "I think to my self, self.",
-                  "REALLY LONG LONG LONG LONG LONG LONG AND IT'S ELEPHANTS ALL OF THE WAY DOWN............ long shit dude...."
+      "Thank you, thank you thank you",
+      "Bob's your uncle",
+      "Dave's Party Principle",
+      "Doodly doodly doo",
+      "Elephants all the way down",
+      "Shiver me timbers",
+      "**sips diet pepsi**",
+      "Follow the tail of breadcrumbs (all the way to gramma's house)",
+      "Here we go!",
+      "But wait a second!",
+      "Whooooooooooooooooo",
+      "**breaks chalk**",
+      "Heat be still!",
+      "Proofo el finito (as they say in Mexico)",
+      "Give me a number, x, thank you!",
+      "Piece of cake",
+      "Just like that",
+      "The only conclusion a thinking person can make...",
+      "Imagen if you will",
+      "But! My Friends!",
+      "Are you buying that?"
                  ]
    return phrases;
 }
