@@ -1,27 +1,110 @@
- <!DOCTYPE html -->
-<html>
+<!DOCTYPE html -->
+<html lang="en">
 
-<head>
-   <!-- jQuery -->
-   <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <meta name="a good natured joke" content="">
+      <meta name="Oliver Jourmel" content="">
+      <link rel="icon" href="icons/favicon.ico">
 
-   <!-- Bootstrap -->
-   <script type="text/javascript" src="js/bootstrap.min.js"></script>
-   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+      <title>David Bingelow!</title>
 
-   <!-- Custom -->
-   <script type="text/javascript" src="js/bingelow.js"></script>
-   <link rel="stylesheet" type="text/css" href="css/bingelow.css" />
+      <!-- jQuery -->
+      <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 
-<title>David Bingelow!</title>
-</head>
+      <!-- Bootstrap -->
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 
-<body>
+      <!-- Custom -->
+      <script type="text/javascript" src="js/bingelow.js"></script>
+      <link rel="stylesheet" type="text/css" href="css/bingelow.css" />
 
-   <p class="label-warn" id="Bingo"></p>
+   </head>
 
+   <body>
 
-   <button type="button" id="generate" onclick="generateBingo()">Generate a Bingelow!</button>
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron hidden-print">
+         <div class="container">
+            <h1>David Bingelow!</h1>
+            <p>As a bit of fun, why not play a rousing game of David Bingelow as you absorb the joys of math?</p>
 
-</body>
+            <div class="col-md-12" style="margin-bottom:5px">
+               <div class="text-center">
+                  <a class="btn btn-primary btn-lg " id="generate-bingelow" onclick="generateBingo()" role="button">Generate a Bingelow Card!</a>
+               </div>
+            </div>
+            <div class="col-md-12" >
+               <div class="text-center">
+                  <a class="btn btn-primary btn-lg hidden" id="print-btn" onclick="window.print()" role="button">Print!</a>
+               </div>
+            </div>
+         </div>
+      </div>
+
+   <div class="container hidden" id="BingoCard">
+      <table border="0" class="text-center" width="800" style="margin-left: auto; margin-right: auto; table-layout:fixed">
+         <tr height="50">
+            <td style="vertical-align:bottom;padding-bottom:7px">Name:__________________</td>
+            <td><h2>David Bingelow</h2></td>
+            <td style="vertical-align:bottom;padding-bottom:7px">Date/Time:__________________</td>
+         </tr>
+      </table>
+
+      <table border="3" class="text-center" width="800" style="margin-left: auto; margin-right: auto; table-layout:fixed">
+         <tr height="200" id="r0">
+            <td id="r0c0"></td>
+            <td id="r0c1"></td>
+            <td id="r0c2"></td>
+            <td id="r0c3"></td>
+            <td class="hidden" id="r0c4"></td>
+         </tr>
+
+         <tr height="200" id="r1">
+            <td id="r1c0"></td>
+            <td id="r1c1"></td>
+            <td id="r1c2"></td>
+            <td id="r1c3"></td>
+            <td class="hidden" id="r1c4"></td>
+         </tr>
+
+         <tr height="200" id="r2">
+            <td id="r2c0"></td>
+            <td id="r2c1"></td>
+            <td id="r2c2"></td>
+            <td id="r2c3"></td>
+            <td class="hidden" id="r2c4"></td>
+         </tr>
+
+         <tr height="200" id="r3">
+            <td id="r3c0"></td>
+            <td id="r3c1"></td>
+            <td id="r3c2"></td>
+            <td id="r3c3"></td>
+            <td class="hidden" id="r3c4"></td>
+         </tr>
+
+         <tr height="0" class="hidden" id="r4">
+            <td class="hidden" id="r4c0"></td>
+            <td class="hidden" id="r4c1"></td>
+            <td class="hidden" id="r4c2"></td>
+            <td class="hidden" id="r4c3"></td>
+            <td class="hidden" id="r4c4"></td>
+         </tr>
+      </table>
+   </div>
+
+      <hr>
+      <footer class="footer text-center">
+         <p>
+            <a href="https://github.com/ojourmel/david-bingelow">GitHub Source</a><br>
+            <a href="https://ojourmel.github.io/david-bingelow/">GitHub Hosting</a>
+         </p>
+      </footer>
+   </body>
 </html>
+
