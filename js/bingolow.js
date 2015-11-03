@@ -81,9 +81,19 @@ function generateBingo() {
             var target = (e || window.event).target;
 
             if(! target.className.match(/clicked/)){
-               target.className = target.className + " clicked";
+               addClass(target,"clicked");
             }else{
-               target.className = target.className.replace( /(?:^|\s)clicked(?!\S)/g , '' );
+               removeClass(target, "clicked");
+            }
+
+            var bingo = document.getElementById('got-bingo');
+            if(checkBingo(bsize)){
+               bingo.style.color = "red";
+               bingo.style.fontWeight = 'bold';
+
+            }else{
+               bingo.style.color = "black";
+               bingo.style.fontWeight = 'normal';
             }
          }
 
@@ -101,6 +111,89 @@ function generateBingo() {
    print.style.visibility = 'visible';
 
 }
+
+// given the clicked cell, check for bingo
+function checkBingo(bsize) {
+
+   var nchecked = 0;
+   var blackout = 0;
+
+   // check the rows, as well as blackout
+   var bingo = false;
+   for (var x=0; x < bsize; x++) {
+      nchecked = 0;
+      for (var y=0; y < bsize; y++) {
+         if (document.getElementById('r'+x+'c'+y).className.match(/clicked/)) {
+            nchecked++;
+            blackout++;
+         }
+      }
+      if(nchecked == bsize){
+         bingo = true;
+      }
+   }
+   // easter egg when you black out the board
+   if (blackout == (bsize*bsize)){
+      addClass(document.body, "blackout-bg");
+      addClass(document.body, "blackout-text");
+      addClass(document.getElementById('title'), "blackout-title-header");
+   }else{
+      removeClass(document.body, "blackout-bg");
+      removeClass(document.body, "blackout-text");
+      removeClass(document.getElementById('title'), "blackout-title-header");;
+   }
+   // either way, if we got a row bingo...
+   if (bingo){
+      return true;
+   }
+
+   // check the columns
+   for (var y=0; y < bsize; y++) {
+      nchecked = 0;
+      for (var x=0; x < bsize; x++) {
+         if (document.getElementById('r'+x+'c'+y).className.match(/clicked/)) {
+            nchecked++;
+         }
+      }
+      if(nchecked == bsize){
+         return true;
+      }
+   }
+
+   // check the two diagonals
+   nchecked = 0;
+   for(var p=0; p < bsize; p++) {
+      if (document.getElementById('r'+p+'c'+p).className.match(/clicked/)) {
+         nchecked++;
+      }
+   }
+   if(nchecked == bsize){
+      return true;
+   }
+
+   nchecked = 0;
+   for(var p=0; p < bsize; p++) {
+      if (document.getElementById('r'+(bsize-p-1)+'c'+p).className.match(/clicked/)) {
+         nchecked++;
+      }
+   }
+   if(nchecked == bsize){
+      return true;
+   }
+
+
+   // if non of the checks have produced a true, there is no bingo :/
+   return false;
+}
+
+function addClass(target, classToBeAdded){
+   target.className = target.className + " " + classToBeAdded;
+}
+function removeClass(target, classToBeRemoved){
+   var re = new RegExp("(?:^|\\s)"+classToBeRemoved+"(?!\\S)","g");
+   target.className = target.className.replace(re, '' );
+}
+
 
 
 // http://stackoverflow.com/a/2450976

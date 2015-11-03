@@ -32,7 +32,6 @@
 .btn{
    border-radius: 5px;
    background: #888C92;
-   color:black;
    padding: 5px; 
 
 }
@@ -95,7 +94,6 @@ footer a:hover {
    margin-left: auto;
    margin-right: auto;
    table-layout: fixed;
-   color: black;
    border: none;
 }
 
@@ -161,5 +159,16 @@ footer a:hover {
 }
 
 
+.blackout-text {
+   color:white;
+}
+
+.blackout-bg {
+   background:#444649;
+}
+
+.blackout-title-header {
+   background: #384B63;
+}
 
 
