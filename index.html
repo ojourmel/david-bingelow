@@ -33,19 +33,40 @@
       </div>
 
    <div id="bingocard">
+      <!--
       <table id="bingoheader">
          <tr height="50" >
-            <td style="padding:0px;">
+            <td>
                <label for="name" style="float:left;" >Name</label>
                <input id="name" type="text" style="float:left"</input>
             </td>
-            <td class="text-center" style="font-size:200%">David <span id="got-bingo">Bingo</span>low</td>
-            <td style="padding:0px;">
-               <label for="datetime" style="float:right">Date/Time</label>
+            <td class="text-center" style="padding-bottom:10px;font-size:180%">David <span id="got-bingo">Bingo</span>low</td>
+            <td>
+               <label for="datetime" style="text-align:right; float:right">Date/Time</label>
                <input id="datetime" type="datetime" style="float:right"></input>
             </td>
          </tr>
       </table>
+      -->
+      <div class="container" id="bingoheader">
+      <div class="row">
+
+      <div class="left bingoheadercell">
+         <label for="name">Name</label>
+         <input class="name" type="text"></input>
+      </div>
+
+      <div class="middle bingoheadercell">
+         <span>David <span id="got-bingo">Bingo</span>low</span>
+      </div>
+
+      <div class="right bingoheadercell">
+         <label for="datetime">Date/Time</label>
+         <input class="datetime" type="datetime"></input>
+      </div>
+
+      </div>
+      </div>
 
       <table id="bingotable">
          <!-- build the rows and columns dynamically using JavaScript-->
@@ -53,12 +74,10 @@
    </div>
 
       <hr class="hidden-print">
-      <footer class="footer">
-         <p>
+      <div class="footer" id="footer">
             <a class="hidden-print" href="https://github.com/ojourmel/david-bingolow">GitHub Source</a><br>
             <a href="https://ojourmel.github.io/david-bingolow/">GitHub Hosting</a>
-         </p>
-      </footer>
+      </div>
    </body>
 </html>
 

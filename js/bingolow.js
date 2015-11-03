@@ -27,6 +27,13 @@ function phraseList() {
 
 function generateBingo() {
 
+   // clear current card styles;
+   removeClass(document.body,"blackout");
+   removeClass(document.getElementById("title"),"blackout-title-header");
+   removeClass(document.getElementById("footer"),"blackout-footer");
+   removeClass(document.getElementById("got-bingo"),"bingoed");
+
+
    // Bingo bsize
    var bsize = 4;
    var csize = 800 / bsize;
@@ -41,9 +48,10 @@ function generateBingo() {
    }
 
    var tableheader = document.getElementById("bingoheader");
-   tableheader.setAttribute('width',csize*bsize);
+   tableheader.setAttribute('width',(csize*bsize)+"px");
+
    var table = document.getElementById("bingotable");
-   table.setAttribute('width',csize*bsize);
+   table.setAttribute('width',(csize*bsize) + "px");
 
    for (var i = 0; i < bsize; i++) {
       var rname = 'r'+i
@@ -52,7 +60,7 @@ function generateBingo() {
       if( row == null){
          row = document.createElement('tr');
          row.setAttribute('id',rname);
-         row.setAttribute('height',csize);
+         row.setAttribute('height',csize+"px");
          table.appendChild(row);
       }
 
@@ -88,12 +96,9 @@ function generateBingo() {
 
             var bingo = document.getElementById('got-bingo');
             if(checkBingo(bsize)){
-               bingo.style.color = "red";
-               bingo.style.fontWeight = 'bold';
-
+               addClass(bingo,"bingoed");
             }else{
-               bingo.style.color = "black";
-               bingo.style.fontWeight = 'normal';
+               removeClass(bingo,"bingoed");
             }
          }
 
@@ -134,12 +139,12 @@ function checkBingo(bsize) {
    }
    // easter egg when you black out the board
    if (blackout == (bsize*bsize)){
-      addClass(document.body, "blackout-bg");
-      addClass(document.body, "blackout-text");
+      addClass(document.body, "blackout");
+      addClass(document.getElementById('footer'), "blackout-footer");
       addClass(document.getElementById('title'), "blackout-title-header");
    }else{
-      removeClass(document.body, "blackout-bg");
-      removeClass(document.body, "blackout-text");
+      removeClass(document.body, "blackout");
+      removeClass(document.getElementById('footer'),"blackout-footer");
       removeClass(document.getElementById('title'), "blackout-title-header");;
    }
    // either way, if we got a row bingo...
@@ -187,7 +192,9 @@ function checkBingo(bsize) {
 }
 
 function addClass(target, classToBeAdded){
-   target.className = target.className + " " + classToBeAdded;
+   if(! target.className.match(classToBeAdded)){
+      target.className = target.className + " " + classToBeAdded;
+   }
 }
 function removeClass(target, classToBeRemoved){
    var re = new RegExp("(?:^|\\s)"+classToBeRemoved+"(?!\\S)","g");

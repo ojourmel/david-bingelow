@@ -5,7 +5,7 @@
       display: none !important;
    }
 
-   footer a:after {
+   #footer a:after {
       color:black;
       content:" (" attr(href)")";
       font-size:90%;
@@ -68,18 +68,18 @@ body {
    text-align: center;
 }
 
-footer {
+.footer {
    display: block;
    text-align: center;
 }
 
 /* unvisited link */
-footer a:link, footer a:visited, footer a:active {
+.footer a:link, .footer a:visited, .footer a:active {
     color: #444649;
 }
 
 /* mouse over link */
-footer a:hover {
+.footer a:hover {
     color: #888C92;
 }
 
@@ -90,27 +90,55 @@ footer a:hover {
    visibility: hidden;
 }
 
+
 #bingoheader {
-   margin-left: auto;
-   margin-right: auto;
-   table-layout: fixed;
-   border: none;
+   margin:auto;
 }
-
-#bingoheader td {
-   vertical-align: bottom;
-   padding-bottom: 10px;
-}
-
 
 #bingoheader label
 {
+   padding:0px;
    border:none;
-   width=30%;
+   width:25%;
 }
 
 #bingoheader input {
-   width=100%;
+   width:65%;
+}
+
+.container {
+   display: table;
+}
+
+.row  {
+   display: table-row;
+   width:99%;
+   padding-bottom:10px;
+}
+
+.left{
+   display: table-cell;
+   padding:0px;
+   text-align:left;
+   float:left;
+   width:100%;
+}
+.middle {
+   display: table-cell;
+   text-align:center;
+   padding:0px;
+   padding-bottom:5px;
+   width:40%;
+}
+.middle > span{
+   font-size:180%;
+}
+.right{
+   display: table-cell;
+   padding:0px;
+   text-align:right;
+   float:right;
+   width:100%;
 }
 
 
@@ -151,24 +179,30 @@ footer a:hover {
    background-color: #D7E1EE;
 }
 
-#bingotable .clicked {
-   background-color: #888C92;
+
+@media screen{
+   .bingoed {
+      color: red;
+      font-weight: bold;
+   }
+
+   .blackout {
+      background:#444649;
+      color:white;
+   }
+
+   .blackout-title-header {
+      background: #384B63;
+   }
+
+   .blackout-footer a:link, .blackout-footer a:visited, .blackout-footer a:active, .blackout-footer a:hover{
+      color: #888C92;
+   }
+
+   #bingotable .clicked {
+      background-color: #888C92;
+   }
+   #bingotable .clicked:hover {
+      background-color: #a5afbc;
+   }
 }
-#bingotable .clicked:hover {
-   background-color: #a5afbc;
-}
-
-
-.blackout-text {
-   color:white;
-}
-
-.blackout-bg {
-   background:#444649;
-}
-
-.blackout-title-header {
-   background: #384B63;
-}
-
-
