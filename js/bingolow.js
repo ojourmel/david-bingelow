@@ -12,13 +12,13 @@ function phraseList() {
       "But wait a second!",
       "Whooooooooooooooooo",
       "**breaks chalk**",
-      "Heat be still!",
+      "Heart be still!",
       "Proofo el finito (as they say in Mexico)",
       "Give me a number, x, thank you!",
       "Piece of cake",
       "Just like that",
       "The only conclusion a thinking person can make...",
-      "Imagen if you will",
+      "Imagine if you will",
       "But! My Friends!",
       "Are you buying that?"
                  ]
@@ -27,64 +27,78 @@ function phraseList() {
 
 function generateBingo() {
 
-   console.log("hello world");
+   // Bingo bsize
+   var bsize = 4;
+   var csize = 800 / bsize;
 
-   var cells = new Array(5);
-   for (var i = 0; i < 5; i++) {
-      cells[i] = new Array(5);
-   }
-
-   // a bit of a hack...
-   cells[0][0] = document.getElementById("r0c0");
-   cells[0][1] = document.getElementById("r0c1");
-   cells[0][2] = document.getElementById("r0c2");
-   cells[0][3] = document.getElementById("r0c3");
-   cells[0][4] = document.getElementById("r0c4");
-   cells[1][0] = document.getElementById("r1c0");
-   cells[1][1] = document.getElementById("r1c1");
-   cells[1][2] = document.getElementById("r1c2");
-   cells[1][3] = document.getElementById("r1c3");
-   cells[1][4] = document.getElementById("r1c4");
-   cells[2][0] = document.getElementById("r2c0");
-   cells[2][1] = document.getElementById("r2c1");
-   cells[2][2] = document.getElementById("r2c2");
-   cells[2][3] = document.getElementById("r2c3");
-   cells[2][4] = document.getElementById("r2c4");
-   cells[3][0] = document.getElementById("r3c0");
-   cells[3][1] = document.getElementById("r3c1");
-   cells[3][2] = document.getElementById("r3c2");
-   cells[3][3] = document.getElementById("r3c3");
-   cells[3][4] = document.getElementById("r3c4");
-   cells[4][0] = document.getElementById("r4c0");
-   cells[4][1] = document.getElementById("r4c1");
-   cells[4][2] = document.getElementById("r4c2");
-   cells[4][3] = document.getElementById("r4c3");
-   cells[4][4] = document.getElementById("r4c4");
-
-
-   // get the phrases, in some order
+   // Our Phrases :)
    var phrases = shuffle(phraseList());
 
-   var x=y=0;
-   var i=0;
-   while(i < phrases.length && i < 25) {
-      cells[x][y].innerHTML = phrases[i];
+   // Initialize cells arrays
+   var cells = new Array(bsize);
+   for (var i = 0; i < bsize; i++) {
+      cells[i] = new Array(bsize);
+   }
 
-      y++;
-      i++;
-      if(y==5){
-         x++;
-         y=0;
+   var tableheader = document.getElementById("bingoheader");
+   tableheader.setAttribute('width',csize*bsize);
+   var table = document.getElementById("bingotable");
+   table.setAttribute('width',csize*bsize);
+
+   for (var i = 0; i < bsize; i++) {
+      var rname = 'r'+i
+
+      var row = document.getElementById(rname);
+      if( row == null){
+         row = document.createElement('tr');
+         row.setAttribute('id',rname);
+         row.setAttribute('height',csize);
+         table.appendChild(row);
+      }
+
+      for(var j = 0; j < bsize; j++){
+         var cellname = 'r'+i+'c'+j;
+         cells[i][j] = document.getElementById(cellname);
+
+         if( cells[i][j] == null){
+
+            cells[i][j] = document.createElement('td');
+            var cellname = 'r'+i+'c'+j
+            cells[i][j].setAttribute('id',cellname);
+            row.appendChild(cells[i][j]);
+         }
+
+         // as long as we have phrases left over...
+         if((i*bsize)+j < phrases.length){
+
+            cells[i][j].innerHTML = phrases[(i*bsize)+j];
+
+         }
+
+         // set the table to be "clickable"
+         // hover is done with css
+         cells[i][j].onclick = function(e){
+            var target = (e || window.event).target;
+
+            if(! target.className.match(/clicked/)){
+               target.className = target.className + " clicked";
+            }else{
+               target.className = target.className.replace( /(?:^|\s)clicked(?!\S)/g , '' );
+            }
+         }
+
+         // make sure that these cells can't be selected
+         cells[i][j].className = "noselect";
       }
    }
 
    // show the filled in card
-   var card = document.getElementById("BingoCard");
-   card.className = card.className.replace( /(?:^|\s)hidden(?!\S)/g , '' );
+   var card = document.getElementById("bingocard");
+   card.style.visibility = 'visible';
 
    // show the print button
    var print = document.getElementById("print-btn");
-   print.className = print.className.replace( /(?:^|\s)hidden(?!\S)/g , '' );
+   print.style.visibility = 'visible';
 
 }
 

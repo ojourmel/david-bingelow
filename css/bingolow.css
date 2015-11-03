@@ -1,3 +1,165 @@
+@media print
+{
+   .hidden-print, .hidden-print *
+   {
+      display: none !important;
+   }
+
+   footer a:after {
+      color:black;
+      content:" (" attr(href)")";
+      font-size:90%;
+   }
+}
+
+/* http://stackoverflow.com/a/4407335 */
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.title-header{
+   text-align: center;
+   border-radius: 25px;
+   background: #D7E1EE;
+   padding: 20px; 
+}
+
+.btn{
+   border-radius: 5px;
+   background: #888C92;
+   color:black;
+   padding: 5px; 
+
+}
+
+.btn:hover {
+   border-radius: 5px;
+   background: #444649;
+   color:white;
+   padding: 5px; 
+
+}
+
+#print-btn {
+   visibility: hidden;
+}
+
+
+
 td {
    padding:5px;
+   white-space: pre-wrap;      /* CSS3 */   
+   white-space: -moz-pre-wrap; /* Firefox */    
+   white-space: -pre-wrap;     /* Opera <7 */   
+   white-space: -o-pre-wrap;   /* Opera 7 */    
+   word-wrap: break-word;      /* IE */
 }
+
+body {
+   min-width:800px;
+   font-family:Verdana, Geneva, sans-serif;
+}
+
+.text-center{
+   text-align: center;
+}
+
+footer {
+   display: block;
+   text-align: center;
+}
+
+/* unvisited link */
+footer a:link, footer a:visited, footer a:active {
+    color: #444649;
+}
+
+/* mouse over link */
+footer a:hover {
+    color: #888C92;
+}
+
+
+
+#bingocard {
+   margin-top: 10px;
+   visibility: hidden;
+}
+
+#bingoheader {
+   margin-left: auto;
+   margin-right: auto;
+   table-layout: fixed;
+   color: black;
+   border: none;
+}
+
+#bingoheader td {
+   vertical-align: bottom;
+   padding-bottom: 10px;
+}
+
+
+#bingoheader label
+{
+   border:none;
+   width=30%;
+}
+
+#bingoheader input {
+   width=100%;
+}
+
+
+#bingotable {
+   border-width: 3px;
+   border-spacing: 5px;
+   border-style: solid;
+   border-color: black;
+   border-collapse: collapse;
+   background-color: white;
+
+   margin-left: auto;
+   margin-right: auto;
+   table-layout: fixed
+}
+
+#bingotable th{
+   border-width: 2px;
+   padding: 5px;
+   border-style: solid;
+   border-color: black;
+   background-color: white;
+   -moz-border-radius: ;
+}
+
+#bingotable td {
+   border-width: 2px;
+   padding: 5px;
+   border-style: solid;
+   border-color: black;
+   background-color: white;
+   -moz-border-radius: ;
+
+   text-align: center;
+}
+
+#bingotable td:hover {
+   background-color: #D7E1EE;
+}
+
+#bingotable .clicked {
+   background-color: #888C92;
+}
+#bingotable .clicked:hover {
+   background-color: #a5afbc;
+}
+
+
+
+
